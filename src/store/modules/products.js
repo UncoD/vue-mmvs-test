@@ -17,8 +17,18 @@ const mutations = {
 }
 
 const actions = {
-  loadAllProducts ({ commit }) {
+  clearProducts ({ commit }) {
+    commit('setProducts', [])
+  },
+  loadAllProducts ({ commit, dispatch }) {
+    dispatch('clearProducts')
     apiProducts.getProducts(products => {
+      commit('setProducts', products)
+    })
+  },
+  loadProductsById ({commit, dispatch}, ids) {
+    dispatch('clearProducts')
+    apiProducts.getProductsById(ids, products => {
       commit('setProducts', products)
     })
   }

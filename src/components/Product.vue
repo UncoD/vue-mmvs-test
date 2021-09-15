@@ -52,9 +52,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Product',
   props: {
+    prodId: { type: Number, required: true},
     name: { type: String, required: true},
     img: { type: String, required: true},
     price: { type: Number, required: true},
@@ -63,17 +65,29 @@ export default {
   data() {
     return {
       count: 0,
-      currency: '$'
+      currency: '₽'
     }
   },
   computed: {
     image() {
       return require('../assets/' + this.img)
-    }
+    },
+    ...mapGetters('cart', {
+      cart: 'getCart',
+      countInCart: 'getCountById'
+    })
+  },
+  created() {
+    this.count = this.countInCart(this.prodId)
   },
   methods: {
     setCount(value) {
       this.count = value
+      if (this.count > 0) {
+        this.$store.dispatch('cart/addToCart', {id: this.prodId, count: this.count})
+      } else {
+        this.$store.dispatch('cart/removeFromCart', this.prodId)
+      }
     }
   }
 }

@@ -1,10 +1,10 @@
 <template>
   <header>
     <router-link to="/">
-      Catalog
+      Каталог
     </router-link>
     <router-link to="/cart">
-      Cart
+      Корзина
     </router-link>
     <div class="header__separator" />
   </header>
@@ -12,13 +12,7 @@
 
 <script>
 export default {
-  name: 'Header',
-  data() {
-    return {
-    }
-  },
-  methods: {
-  }
+  name: 'Header'
 }
 </script>
 
@@ -37,10 +31,12 @@ header {
     color: #2c3e50;
     font-size: 20px;
 
+    &.router-link-exact-active {
+      border-color: green;
+    }
     &:hover {
       background-color: #ddd9db;
     }
-
     &:active {
       background-color: #ecebec;
     }

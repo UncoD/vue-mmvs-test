@@ -3,6 +3,7 @@
     <Product
       v-for="product in products"
       :key="product.id"
+      :prod-id="product.id"
       :name="product.name"
       :img="product.img"
       :description="product.description"

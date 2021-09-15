@@ -53,5 +53,8 @@ const _products = [
 export default {
   getProducts (cb) {
     setTimeout(() => cb(_products), 100)
+  },
+  getProductsById (ids, cb) {
+    setTimeout(() => cb(_products.filter(product => ids.includes(product.id))), 100)
   }
 }
