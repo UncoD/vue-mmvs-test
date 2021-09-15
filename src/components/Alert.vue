@@ -65,4 +65,9 @@ export default {
     background: #ffa6a6;
   }
 }
+@media screen and (max-width: 550px) {
+  .alert {
+    width: 90%;
+  }
+}
 </style>

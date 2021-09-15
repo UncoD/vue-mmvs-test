@@ -153,4 +153,14 @@ export default {
     }
   }
 }
+@media screen and (max-width: 550px) {
+  .cart {
+    flex-direction: column;
+    max-width: 100%;
+
+    &__order {
+      margin: 30px 0;
+    }
+  }
+}
 </style>
